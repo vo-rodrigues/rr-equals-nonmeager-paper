@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite this manuscript; if you use the Lean formalization, also cite lean/CITATION.cff."
+type: dataset
+title: "Determining the Rearrangement Number: manuscript sources"
+authors:
+  - family-names: "de Oliveira Rodrigues"
+    given-names: "Vinicius"
+license: CC-BY-4.0
+preferred-citation:
+  type: unpublished
+  title: "Determining the Rearrangement Number"
+  authors:
+    - family-names: "de Oliveira Rodrigues"
+      given-names: "Vinicius"
+  year: 2026
+  notes: "Manuscript proving in ZFC that the rearrangement number equals the uniformity of the meagre ideal."

@@ -1,0 +1,126 @@
+\section{Notation and previous results}\label{sec:preliminaries}
+
+The set of all natural numbers is identified with the first infinite ordinal, $\omega$.
+$\Sym$ denotes the group of all permutations of $\omega$.
+We identify a real series with a sequence
+$a=\langle a_n:n<\omega\rangle\in\mathbb R^\omega$ and write
+\[
+ S_m(a)=\sum_{n<m}a_n,
+ \qquad
+ S_m^\pi(a)=\sum_{n<m}a_{\pi(n)}
+ \quad(\pi\in\Sym, m \in \omega).
+\]
+A series $a$ is conditionally convergent if $\sum_n a_n$ converges but
+$\sum_n\abs{a_n}$ diverges.
+The set of all conditionally convergent series is denoted by $\CC$.
+
+\begin{definition}\label{def:rr}
+A collection $\Pi\subseteq\Sym$ is \emph{rearranging} if for every
+$a\in\CC$ there exists $\pi\in\Pi$ such that
+$\sum_n a_{\pi(n)}$ either diverges or converges to a real number different
+from the original sum.  The \emph{rearrangement number} is defined as
+\[
+      \rr=\min\{\abs{\Pi}:\Pi\subseteq\Sym
+      \text{ is rearranging}\}.
+\]
+\end{definition}
+
+
+For
+$f,g\in\omega^\omega$, write $f\leq^*g$ when
+$f(n)\leq g(n)$ for all but finitely many $n\in \omega$.
+If $f\not \leq^*g$, we write $g<^\infty f$.
+
+
+The bounding number
+$\bb$ is the least cardinality of a $\leq^*$-unbounded subset of
+$\omega^\omega$.
+
+Let $\cM$ and $\cN$ be the ideals of meager and Lebesgue null subsets
+of $\mathbb R$, respectively, and let $\mathfrak c=|\mathbb R|$.
+The cardinal $\covN$ is the least cardinality of a collection of Lebesgue null subsets of $\mathbb R$ whose union is $\mathbb R$.
+Finally, the cardinal $\nonM$ is the least cardinality of a nonmeager subset of $\mathbb R$.
+It is well known that $\aleph_1\leq \max\{\covN,\bb\}\leq\nonM\leq \mathfrak c$.
+See \cite{BlassHandbook} for more
+background on these cardinal invariants.
+
+\begin{theorem}[{\cite[Theorems 7, 8, and 11]{BBBHHL}}]
+\label{thm:known-sandwich}
+In ZFC, $\max\{\covN,\bb\}\leq\rr\leq\nonM$.
+\end{theorem}
+For a sequence $r:\omega\to\omega\setminus\{0\}$, let
+\[
+ {\mathcal S}_r=\left\{\varphi:\omega\to[\omega]^{<\omega}:
+                         \abs{\varphi(n)}\leq r(n)\text{ for every }n\right\}.
+\]
+The elements of ${\mathcal S}_r$ are called \emph{$r$-slaloms}. A function
+$x\in\omega^\omega$ \emph{eventually avoids} $\varphi$ if
+$x(n)\notin\varphi(n)$ for all but finitely many $n$.
+
+\begin{theorem}[Bartoszy\'nski, {\cite[Lemma 2.4.8]{BartoszynskiJudah}}]\label{thm:slaloms}
+For every $r:\omega\to\omega\setminus\{0\}$, every family
+$\Phi\subseteq{\mathcal S}_r$ of cardinality less than $\nonM$
+has a common eventual avoider.
+\end{theorem}
+We identify a natural number $m$ with $\{0,\ldots,m-1\}$. For a finite set $X$, $\operatorname{Sym}(X)$
+denotes its permutation group.
+In particular, for a natural number $L$, $\operatorname{Sym}(L)$ is the standard permutation group $S_L$.
+
+Following \cite{BlassHandbook}, we use the language of Galois--Tukey connections.
+
+\begin{definition}
+      A \emph{relation triple}, or simply a \emph{relation}, is a triple $\mathbf A=(A_-,A_+,A)$, where $A_-$ and $A_+$ are nonempty sets and $A\subseteq A_-\times A_+$ has domain $A_-$.
+
+      Elements of $A_-$ are called \emph{challenges} and elements of $A_+$ are called \emph{responses}.
+
+      The norm of a relation $\mathbf A$ is defined as
+      \[
+            \|\mathbf A\|=\min\{|Y|:Y\subseteq A_+\text{ and }\forall x\in A_-\ \exists y\in Y\ (x,y)\in A\}.
+      \]
+\end{definition}
+
+Thus:
+\begin{itemize}
+      \item The cardinal $\mathfrak b$ is $\|\mathfrak B\|$, where $\mathfrak B=(\omega^\omega,\omega^\omega,<^{\infty})$.
+      \item The cardinal $\nonM$ is $\|\mathfrak S_r\|$, where $\mathfrak S_r=(\omega^\omega,{\mathcal S}_r,\in^\infty)$ for any $r:\omega\to\omega\setminus\{0\}$ with $\lim_{n\to\infty}r(n)=\infty$.
+      Here $e\in^\infty\varphi$ means that $e(n)\in\varphi(n)$ for infinitely many $n$.
+      \item The cardinal $\rr$ is $\|\mathfrak R\|$, where $\mathfrak R=(\CC,\Sym,\text{rearranges})$.
+\end{itemize}
+
+\begin{definition}
+      Let $\mathbf A=(A_-,A_+,A)$ and $\mathbf B=(B_-,B_+,B)$ be relations. A \emph{morphism} from $\mathbf A$ to $\mathbf B$ is a pair of functions $(\phi_-,\phi_+)$, where $\phi_-:B_-\to A_-$ and $\phi_+:A_+\to B_+$, such that
+      \[
+            \forall x\in B_-\ \forall y\in A_+\ (\phi_-(x),y)\in A\rightarrow(x,\phi_+(y))\in B.
+      \]
+\end{definition}
+
+It is straightforward to check that if there is a morphism from $\mathbf A$ to $\mathbf B$, then $\|\mathbf A\|\geq\|\mathbf B\|$.
+
+\begin{definition}[{\cite[Definition 4.10]{BlassHandbook}}]
+\label{def:sequential-composition}
+For relations $\mathbf A=(A_-,A_+,A)$ and $\mathbf B=(B_-,B_+,B)$,
+their \emph{sequential composition} is
+\[
+ \mathbf A;\mathbf B
+ =\bigl(A_-\times{}^{A_+}B_-,\ A_+\times B_+,\ C\bigr),
+\]
+where ${}^{A_+}B_-$ is the set of functions from $A_+$ to $B_-$, and
+\[
+ (x,f)\,C\,(a,b)
+ \quad\Longleftrightarrow\quad x\,A\,a\text{ and }f(a)\,B\,b.
+\]
+Thus the second challenge $f(a)$ depends on the response $a$ to the
+first challenge $x$.
+\end{definition}
+
+\begin{remark}[{\cite[Theorem 4.11(3)]{BlassHandbook}}]
+\label{rem:sequential-norm}
+The norm of the sequential composition satisfies
+\[
+ \|\mathbf A;\mathbf B\|=\|\mathbf A\|\cdot\|\mathbf B\|.
+\]
+For the upper bound, which is all we need, take families $Y\subseteq A_+$
+and $Z\subseteq B_+$ witnessing the two norms. Given a challenge $(x,f)$,
+choose $a\in Y$ with $x\,A\,a$, and then $b\in Z$ with $f(a)\,B\,b$.
+Hence $Y\times Z$ responds to every challenge in $\mathbf A;\mathbf B$.
+\end{remark}

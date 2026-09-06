@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this formalization, please cite this software and the accompanying manuscript."
+type: software
+title: "The rearrangement number: non(M) <= rr in Lean"
+authors:
+  - family-names: "de Oliveira Rodrigues"
+    given-names: "Vinicius"
+version: 0.1.0
+license: Apache-2.0
+abstract: >-
+  A standalone Lean 4 and mathlib formalization of non(M) <= rr, with
+  non(M) defined using the meagre ideal on the real line and rr using
+  rearranging families of permutations of the natural numbers.
+  Formalizes the lower bound from Determining the Rearrangement Number.
+keywords:
+  - Lean
+  - mathlib
+  - formal verification
+  - rearrangement number
+  - cardinal characteristics
+  - Baire category

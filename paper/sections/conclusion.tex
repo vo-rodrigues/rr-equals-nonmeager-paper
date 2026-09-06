@@ -1,0 +1,166 @@
+\section{Conclusion}\label{sec:conclusion}
+
+Theorem~\ref{thm:main} answers Question~46 of \cite{BBBHHL}, repeated
+as Problem~10 of \cite{BrechBrendleTelles}, by showing that $\mathfrak{rr}=\nonM$.
+In this section, we record some further
+consequences for other related cardinal characteristics of the continuum.
+
+In \cite{BBBHHL}, the authors defined several variants of the rearrangement number
+by restricting the permitted outcomes of rearrangements.
+
+\begin{definition}\label{def:rr-variants}
+If $\pi\in\Sym$
+rearranges $a\in\CC$, we say that the outcome of the rearrangement is of type
+\begin{enumerate}
+\item[$f$] if $\sum_n a_{\pi(n)}$ converges to a real number different
+      from the original sum;
+\item[$i$] if it diverges to $+\infty$ or to $-\infty$;
+\item[$o$] if its partial sums diverge by oscillation, meaning that
+      they have no limit in the extended real line
+      $[-\infty,+\infty]$.
+\end{enumerate}
+If $x$ is one of $f,i,o,fi,fo,io$, a collection
+$\Pi\subseteq\Sym$ is \emph{$x$-rearranging} if, for every
+$a\in\CC$, some $\pi\in\Pi$ has one of the outcome types whose letter
+occurs in $x$. Define $\mathfrak{rr}_x$ as the least cardinality of an
+$x$-rearranging family. This gives the cardinals
+\[
+ \rrf,\quad\rri,\quad\rro,\quad
+ \rrfi,\quad\rrfo,\quad\rrio.
+\]
+\end{definition}
+
+Some ZFC relations between these cardinals were obtained in \cite{BBBHHL} and are shown in Figure~\ref{fig:rr-variants}.
+
+\begin{figure}[ht]
+\begin{center}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  cardinal/.style={font=\large,inner sep=2pt}
+]
+  \node[cardinal] (rrf)  at (-1.5,1.5) {$\rrf$};
+  \node[cardinal] (rri)  at ( 1.5,1.5) {$\rri$};
+  \node[cardinal] (rrfi) at ( 0,0)     {$\rrfi$};
+  \node[cardinal] (rr)   at ( 0,-1.5)  {$\rr=\rrfo=\rrio=\rro$};
+
+  \draw (rrf) -- (rrfi);
+  \draw (rri) -- (rrfi);
+  \draw (rrfi) -- (rr);
+\end{tikzpicture}
+\end{center}
+\caption{The hierarchy of rearrangement numbers.
+Higher means provably at least as large in ZFC.}
+\label{fig:rr-variants}
+\end{figure}
+
+Recall that $\dd$ is the least size of a dominating family in
+$(\omega^\omega,\leq^*)$, and $\cofM$ is the least size of a family
+of meager sets cofinal under inclusion in the ideal $\cM$.
+
+\begin{corollary}\label{cor:rr-variants}
+In ZFC,
+\[
+ \rr=\rro=\rrfo=\rrio=\nonM
+ \quad\text{and}\quad
+ \cofM\leq\rrfi\leq\min\{\rrf,\rri\}.
+\]
+In particular, if $\cofM=\mathfrak c$, then
+$\rrfi=\rrf=\rri=\mathfrak c$.
+\end{corollary}
+
+\begin{proof}
+By \cite[Theorem~5]{BBBHHL}, $\rr=\rro=\rrfo=\rrio$, so the first
+equality follows from Theorem~\ref{thm:main}. Also,
+$\dd\leq\rrfi$ by \cite[Theorem~12]{BBBHHL}. Thus the classical
+identity $\cofM=\max\{\dd,\nonM\}$
+\cite[Theorem~5.6]{BlassHandbook} gives
+\[
+ \cofM=\max\{\dd,\rr\}\leq\rrfi.
+\]
+The remaining conclusions follow from the definitions and the upper
+bound $\mathfrak c$ for all the rearrangement numbers.
+\end{proof}
+
+Some cardinals related to the rearrangement number were defined
+in \cite{BrendleBrianHamkins}, including the subseries number $\sz$,
+the subrearrangement number $\sr$, and the oscillation subseries number $\sz_o$.
+
+\begin{definition}[{\cite{BrendleBrianHamkins}}]\label{def:subseries}
+The \emph{subseries number} $\sz$ is the least size of a family
+$\mathcal A\subseteq[\omega]^\omega$ such that, for every $a\in\CC$ there exists $A\in\mathcal A$ such that $\sum_{n\in A}a_n$ diverges.
+Restricting divergence to divergence by oscillation gives the \emph{oscillation subseries number} $\sz_o$.
+
+The \emph{subrearrangement number} $\sr$ is the least size of a
+family $F$ of injections from $\omega$ to $\omega$ such that, for
+every $a\in\CC$, some $f\in F$ makes $\sum_n a_{f(n)}$ diverge.
+\end{definition}
+
+Brendle, Brian, and Hamkins proved
+$\covN\leq\sz\leq\sz_o\leq\nonM$
+\cite[Theorems~4, 11, and~13]{BrendleBrianHamkins}.
+They also established $\rr\leq\max\{\bb,\sz\}$ and
+$\sz_o\leq\max\{\bb,\sz\}$
+\cite[Theorems~19(1) and~21]{BrendleBrianHamkins}, while
+$\bb\leq\rr$ was already known from \cite[Theorem~11]{BBBHHL}.
+For subrearrangements, they obtained the identity
+$\sr=\min\{\sz,\rr\}$
+\cite[Theorem~35]{BrendleBrianHamkins}.
+
+The comparison between $\sz$ and $\rr$ was left undecided in one
+direction: Question~20 of \cite{BrendleBrianHamkins} asks whether
+$\rr<\sz$ is consistent. Equivalently, in view of $\bb\leq\rr$,
+they asked whether the bound $\rr\leq\max\{\bb,\sz\}$ can be strict.
+At the end of Section~10, they also asked whether $\sr<\sz$ is
+consistent. In the other direction, their analysis of the Laver model
+already gave the consistency of $\sz=\sz_o<\bb=\rr$
+\cite[Section~9]{BrendleBrianHamkins}.
+Combining the known relations with Theorem~\ref{thm:main} yields the
+following answers.
+
+\begin{corollary}\label{cor:subseries}
+In ZFC,
+\[
+ \sr=\sz\leq\sz_o\leq\rr=\nonM,
+ \qquad
+ \rr=\max\{\bb,\sz\}=\max\{\bb,\sz_o\}.
+\]
+If $\bb<\nonM$, then $\sr=\sz=\sz_o=\rr=\nonM$.
+\end{corollary}
+
+\begin{proof}
+By \cite[Theorems~13 and~19(1)]{BrendleBrianHamkins},
+$\sz_o\leq\nonM$ and $\rr\leq\max\{\bb,\sz\}$.
+Together with $\sz\leq\sz_o$, $\bb\leq\rr$, and
+Theorem~\ref{thm:main}, these yield
+\[
+ \rr\leq\max\{\bb,\sz\}\leq\max\{\bb,\sz_o\}\leq\rr.
+\]
+Moreover, \cite[Theorem~35]{BrendleBrianHamkins} gives
+$\sr=\min\{\sz,\rr\}=\sz$.
+If $\bb<\nonM=\rr$, the identity $\rr=\max\{\bb,\sz\}$ forces
+$\sz=\rr$, and the other equalities follow.
+\end{proof}
+
+In particular, Question~20 of \cite{BrendleBrianHamkins}, asking
+whether $\rr<\sz$ is consistent, has a negative answer. The same is
+true of the question at the end of Section~10 of that paper about
+the consistency of $\sr<\sz$.
+
+\subsection*{Acknowledgments}
+
+The author thanks Tan Özalp for pointing out a serious error concerning the use of
+the Laver property in a forcing notion in an earlier version of this manuscript.
+
+This study was financed, in part, by the São Paulo Research Foundation
+(FAPESP), Brazil. Process Number 2025/07302-0.
+
+\subsection*{Declaration on the use of generative artificial intelligence}
+
+The author used the OpenAI GPT-6 Astra large language model through Codex during the
+research and preparation of this manuscript for generating and
+developing novel mathematical arguments and proofs, searching the literature,
+checking arguments for possible gaps and errors, and drafting and
+revising the text and \LaTeX{} source. The author
+takes full responsibility for the arguments, claims, references, and
+any errors that remain.

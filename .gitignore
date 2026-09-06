@@ -1,0 +1,34 @@
+# Local verification workspace
+/.validation/
+
+# LaTeX build products
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Lean build products and downloaded dependencies
+**/.lake/
+*.olean
+*.ilean
+*.trace
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~

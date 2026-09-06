@@ -1,0 +1,110 @@
+\section{A counting estimate}\label{sec:finite}
+
+For a finitely supported sequence $u\in\mathbb R^\omega$ and
+$\pi\in\Sym$, let
+\[
+ M(u)=\sup_{j<\omega}\left|S_j(u)\right| \quad \text{and}\quad
+ M_\pi(u)=\sup_{j<\omega}\left|S_j^\pi(u)\right|.
+\]
+For $v\in\mathbb R^L$ and $\sigma\in\operatorname{Sym}(L)$, use
+the same notation with the maximum over $j\leq L$.
+
+When $v\in \{-p, p\}^L$ for some $p>0$, we think of $v$ as a walk starting at $0$.
+We interpret $v_i=p$ as a step of length $p$ to the right and $v_i=-p$ as a step of length $p$ to the left.
+Then $M(v)$ is the maximum distance from the origin reached by this walk.
+
+We say that $v \in \{-p, p\}^L$ is \emph{balanced} if $S_L(v)=0$, that is, if the walk ends at the origin.
+Clearly, balanced vectors exist only for even integers $L$.
+
+\begin{lemma}\label{lem:finite}
+For all positive integers $m$ and $q$,
+there exist a positive integer $L$ and balanced vectors
+$(v_k)_{k<m}$ in $\{-1/L,1/L\}^L$ satisfying, for every $\sigma\in\operatorname{Sym}(L)$,
+\begin{equation*}
+ \left|\{k<m:M_\sigma(v_k)>1/q\}\right|\leq 4q^4.
+\end{equation*}
+\end{lemma}
+
+Recall that if $(e_k)_{k<m}$ is an orthonormal family in a real
+inner product space, then Bessel's inequality gives
+$\sum_{k<m}|\langle b,e_k\rangle|^2\leq\|b\|^2$ for every vector $b$
+in that space.
+
+\begin{proof}
+List the elements of $\{-1,1\}^m$ as $(x_i)_{i<L}$, where $L=2^m$.
+For $k<m$, put
+\[
+ v_k(i)=\frac{x_i(k)}L\qquad(i<L).
+\]
+Each $v_k$ is balanced, since
+\begin{equation*}
+      \sum_{i<L}v_k(i)=\frac1L\sum_{i<L}x_i(k)
+      =\frac1L\sum_{x\in\{-1,1\}^m}x(k)=0.
+\end{equation*}
+Moreover, for every two distinct $k,\ell<m$,
+\begin{equation}\label{eq:orthogonal}
+ v_k\cdot v_\ell
+ =\frac1{L^2}\sum_{x\in\{-1,1\}^m}x(k)x(\ell)
+ =\frac1{L^2}\left(\sum_{x(k)=x(\ell)}1-\sum_{x(k)\neq x(\ell)}1\right)
+ =0.
+\end{equation}
+Also, for every $k<m$,
+\begin{equation}\label{eq:norm}
+ \|v_k\|^2=\sum_{i<L}v_k(i)^2
+ =\sum_{i<L}\frac1{L^2}=\frac1L.
+\end{equation}
+
+Fix $\sigma\in\operatorname{Sym}(L)$.
+The vectors $e_k=\sqrt L\,(v_k\circ\sigma)$ are orthonormal by \eqref{eq:orthogonal} and \eqref{eq:norm}.
+For $j\leq L$, define $b_j\in\mathbb R^L$ by
+\[
+ b_j(i)=
+ \begin{cases}
+  1,&i<j,\\
+  0,&j\leq i<L.
+ \end{cases}
+\]
+Then, for each $j\leq L$,
+\begin{equation}\label{eq:prefix-square}
+ \sum_{k<m}|S_j^\sigma(v_k)|^2
+ =\frac1L\sum_{k<m}|\langle b_j,e_k\rangle|^2
+ \leq\frac{\|b_j\|^2}{L}
+ =\frac jL\leq1.
+\end{equation}
+
+For $k<m$ and $j\leq L$, telescoping gives
+\[
+\begin{aligned}
+ |S_j^\sigma(v_k)|^2
+ &=\sum_{i<j}\left((S_{i+1}^\sigma(v_k))^2
+                         -(S_i^\sigma(v_k))^2\right)\\
+ &=\sum_{i<j}\left(S_{i+1}^\sigma(v_k)-S_i^\sigma(v_k)\right)
+             \left(S_{i+1}^\sigma(v_k)+S_i^\sigma(v_k)\right)\\
+ &=\sum_{i<j}v_k(\sigma(i))
+             \left(S_{i+1}^\sigma(v_k)+S_i^\sigma(v_k)\right)\\
+ &\leq\frac1L\sum_{i<L}
+             \left(|S_{i+1}^\sigma(v_k)|+|S_i^\sigma(v_k)|\right)
+ =\frac2L\sum_{i<L}|S_i^\sigma(v_k)|,
+\end{aligned}
+\]
+where the last equality uses $S_0^\sigma(v_k)=S_L^\sigma(v_k)=0$.
+Taking the maximum over $j$ and applying the Cauchy--Schwarz inequality, we get
+\[
+ M_\sigma(v_k)^4
+ \leq\left(\frac2L\sum_{i<L}1\cdot|S_i^\sigma(v_k)|\right)^2
+ \leq\frac4L\sum_{i<L}|S_i^\sigma(v_k)|^2.
+\]
+Summing over $k$ and using \eqref{eq:prefix-square},
+\[
+ \sum_{k<m}M_\sigma(v_k)^4
+ \leq\frac4L\sum_{i<L}\sum_{k<m}|S_i^\sigma(v_k)|^2
+ \leq\frac4L\sum_{i<L}1=4.
+\]
+Finally, let $B=\{k<m:M_\sigma(v_k)>1/q\}$.
+The required bound follows from
+\[
+ \frac{|B|}{q^4}=\sum_{k\in B}\frac1{q^4}
+ \leq\sum_{k\in B}M_\sigma(v_k)^4
+ \leq\sum_{k<m}M_\sigma(v_k)^4\leq4.\qedhere
+\]
+\end{proof}

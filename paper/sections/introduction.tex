@@ -1,0 +1,90 @@
+\section{Introduction}\label{sec:introduction}
+
+Riemann's rearrangement theorem states that every conditionally
+convergent real series has rearrangements converging to any prescribed
+element of $\mathbb R\cup\{-\infty,+\infty\}$, as well as
+rearrangements that diverge by oscillation \cite{Riemann}.  This
+flexibility leads naturally to the following question: how many
+permutations are required to disrupt every conditionally convergent
+series?
+
+To the best of the author's knowledge, this question first appeared
+explicitly in a 2015 MathOverflow post by Hardy \cite{HardyMO}.  Blass,
+Brendle, Brian, Hamkins, Hardy, and Larson subsequently introduced the
+corresponding cardinal characteristic $\rr$, called the
+\emph{rearrangement number}, and systematically studied it
+\cite{BBBHHL}.  They proved
+\[
+ \max\{\covN,\bb\}\leq\rr\leq\nonM.
+\]
+The definitions of these cardinals are recalled in
+Section~\ref{sec:preliminaries}.
+
+The relevant characteristics occupy adjacent levels of Cichoń's
+diagram, as illustrated in Figure~\ref{fig:intro-cichon}.  The two
+lower bounds are incomparable in ZFC: both $\covN<\bb$ and
+$\bb<\covN$ are consistent.
+
+\begin{figure}[ht]
+ \centering
+ \begin{tikzpicture}[
+   x=1cm,
+   y=1cm,
+   cardinal/.style={font=\small,inner sep=2pt},
+   classical/.style={->,thin},
+   rrbound/.style={->,thick,densely dashed},
+   rrnode/.style={font=\large,draw,rounded corners,inner sep=4pt}
+  ]
+  \node[cardinal] (covN) at (0,2.8) {$\operatorname{cov}(\cN)$};
+  \node[cardinal] (nonM) at (3,2.8) {$\operatorname{non}(\cM)$};
+  \node[cardinal] (cofM) at (6,2.8) {$\operatorname{cof}(\cM)$};
+  \node[cardinal] (cofN) at (9,2.8) {$\operatorname{cof}(\cN)$};
+  \node[cardinal] (c) at (11.5,2.8) {$\mathfrak c$};
+
+  \node[cardinal] (b) at (3,1.4) {$\bb$};
+  \node[cardinal] (d) at (6,1.4) {$\dd$};
+
+  \node[cardinal] (aleph1) at (-2.5,0) {$\aleph_1$};
+  \node[cardinal] (addN) at (0,0) {$\operatorname{add}(\cN)$};
+  \node[cardinal] (addM) at (3,0) {$\operatorname{add}(\cM)$};
+  \node[cardinal] (covM) at (6,0) {$\operatorname{cov}(\cM)$};
+  \node[cardinal] (nonN) at (9,0) {$\operatorname{non}(\cN)$};
+
+  \draw[classical] (covN) -- (nonM);
+  \draw[classical] (nonM) -- (cofM);
+  \draw[classical] (cofM) -- (cofN);
+  \draw[classical] (addN) -- (addM);
+  \draw[classical] (addM) -- (covM);
+  \draw[classical] (covM) -- (nonN);
+  \draw[classical] (addN) -- (covN);
+  \draw[classical] (addM) -- (b);
+  \draw[classical] (b) -- (nonM);
+  \draw[classical] (covM) -- (d);
+  \draw[classical] (d) -- (cofM);
+  \draw[classical] (nonN) -- (cofN);
+  \draw[classical] (b) -- (d);
+  \draw[classical] (aleph1) -- (addN);
+  \draw[classical] (cofN) -- (c);
+
+  \node[rrnode] (rr) at (1.55,1.95) {$\rr$};
+  \draw[rrbound] (covN) -- (rr);
+  \draw[rrbound] (b) -- (rr);
+  \draw[rrbound] (rr) -- (nonM);
+ \end{tikzpicture}
+ \caption{Cichoń's diagram with the previously known bounds for $\rr$.}
+ \label{fig:intro-cichon}
+\end{figure}
+
+Explicitly, they asked the following.
+
+\begin{question}[\cite{BBBHHL}, Question~46]\label{q:intro-rr-nonM}
+Does ZFC prove that $\rr=\nonM$?
+\end{question}
+
+The question was repeated as Problem~10 by Brech, Brendle, and Telles
+\cite{BrechBrendleTelles}.
+In this paper, we settle this question by proving that the answer is positive.
+
+\begin{theorem}[Main Theorem]\label{thm:main}
+In ZFC, $\rr=\nonM$.
+\end{theorem}
