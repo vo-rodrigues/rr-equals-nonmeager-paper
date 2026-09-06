@@ -32,9 +32,14 @@ Validation date: **2026-09-06**.
 
 - Workflow files pass `actionlint` 1.7.7. Action input names were checked
   against the corresponding pinned upstream action definitions.
-- Both workflows run on pushes, pull requests, and manual requests with
-  read-only repository-content permissions. The PDF artifact is `paper-pdf`
-  and requests 90 days of retention.
+- Both workflows run on pushes, pull requests, and manual requests. Build
+  jobs have read-only repository permissions. The PDF publication job has
+  permission to maintain the `latest-pdf` prerelease and only runs for the
+  default branch, after a successful build. Its `main.pdf` asset provides the
+  permanent README download link. Per-run artifacts remain available for 90 days.
+- The publication workflow was checked locally but has not been executed
+  against GitHub; the permanent link becomes available after its first
+  successful default-branch run.
 - Both citation files validate against the official CFF 1.2.0 JSON schema.
 - All relative documentation links resolve within the repository. Git's
   ignore checks exclude the generated PDF, LaTeX auxiliary files, Lean build

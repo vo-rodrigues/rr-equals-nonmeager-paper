@@ -1,5 +1,7 @@
 # Determining the Rearrangement Number
 
+**[Download the latest PDF](../../releases/download/latest-pdf/main.pdf)**
+
 Manuscript and accompanying Lean 4 formalization by **Vinicius de Oliveira Rodrigues**.
 
 The manuscript proves in ZFC that the rearrangement number equals the uniformity
@@ -31,24 +33,6 @@ latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
 
 The output is `paper/main.pdf`. The bibliography is generated from the included
 BibTeX source; figures are drawn with TikZ and need no external image files.
-
-## Download the latest PDF
-
-After this repository is pushed to GitHub:
-
-1. Open **Actions**, then **Paper PDF**.
-2. Filter by the repository's default branch and select its most recent
-   successful **push** run. A pull request run may contain proposed changes.
-3. In **Artifacts**, download **paper-pdf** and extract `main.pdf`.
-
-The PDF corresponds to the commit shown on that run. If a newer build failed,
-the last successful PDF does not include those newer changes. GitHub requires
-you to sign in to download workflow artifacts. Artifacts request 90 days of
-retention, subject to repository or organization settings. To regenerate an
-expired artifact, use **Run workflow** on the desired branch.
-
-The workflow also runs on pull requests and can be started manually. PDFs are
-build artifacts; they are not committed or published as GitHub releases.
 
 ## Build the Lean formalization
 

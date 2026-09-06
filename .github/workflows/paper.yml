@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: paper-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -36,3 +36,46 @@ jobs:
           path: paper/main.pdf
           if-no-files-found: error
           retention-days: 90
+
+  publish:
+    name: Update latest PDF
+    needs: build
+    if: >-
+      github.event_name != 'pull_request' &&
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      BUILD_SHA: ${{ github.sha }}
+      BUILD_RUN_ID: ${{ github.run_id }}
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - name: Publish the latest successful default-branch PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          current_sha=$(gh api "repos/$GH_REPO/git/ref/heads/$DEFAULT_BRANCH" --jq '.object.sha')
+          if [ "$current_sha" != "$BUILD_SHA" ]; then
+            echo "Skipping an outdated build."
+            exit 0
+          fi
+
+          gh run download "$BUILD_RUN_ID" --name paper-pdf --dir paper
+          test -s paper/main.pdf
+          printf 'Latest manuscript PDF, compiled from commit %s.\n' "$BUILD_SHA" > release-notes.md
+
+          if gh release view latest-pdf > /dev/null 2>&1; then
+            gh api --method PATCH "repos/$GH_REPO/git/refs/tags/latest-pdf" \
+              -f sha="$BUILD_SHA" -F force=true > /dev/null
+            gh release upload latest-pdf paper/main.pdf --clobber
+            gh release edit latest-pdf --title "Latest PDF" --notes-file release-notes.md
+          else
+            gh release create latest-pdf paper/main.pdf \
+              --target "$BUILD_SHA" --title "Latest PDF" \
+              --notes-file release-notes.md --prerelease --latest=false
+          fi
