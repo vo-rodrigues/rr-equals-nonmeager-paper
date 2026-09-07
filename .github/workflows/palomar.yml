@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: Apache-2.0
+name: Palomar
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: palomar-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  comparator:
+    name: Comparator and NanoDa
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install Lean and fetch pinned mathlib cache
+        uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596 # v1
+        with:
+          lake-package-directory: lean
+          auto-config: false
+          build: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Verify statement, axioms, and independent kernel replay
+        working-directory: lean
+        run: |
+          chmod +x scripts/landrun-wrapper.sh
+          bash scripts/verify-comparator.sh
