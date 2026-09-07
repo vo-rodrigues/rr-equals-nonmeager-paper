@@ -19,7 +19,7 @@ project:
   license: Apache-2.0
 classification:
   arxiv: [math.LO]
-  msc2020: [03E17, 40A05]
+  msc2020: ["03E17", "40A05"]
 sources:
   - title: Determining the Rearrangement Number
     authors: [Vinicius de Oliveira Rodrigues]
