@@ -53,7 +53,7 @@ automation:
     manuscript author and responsible human maintainer.
 fidelity:
   divergences: >-
-    Only the rr ≤ non(M) inequality is formalized. The Lean proof supplies its
+    Only the non(M) ≤ rr inequality is formalized. The Lean proof supplies its
     classical ingredients and uses the proof organization described in
     docs/MANUSCRIPT.md. No extra hypotheses occur in the submitted inequality.
     Ordered convergence uses SummationFilter.conditional rather than
